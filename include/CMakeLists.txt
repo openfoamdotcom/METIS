@@ -14,7 +14,7 @@ configure_file(metis.h.in metis.h @ONLY)
 # Configure main target to consume the metis.h
 # TODO: Move to FILE_SET for cmake 3.23
 set_target_properties(METIS_METIS PROPERTIES
-		PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/metis.h
+		PUBLIC_HEADER ${CMAKE_CURRENT_BINARY_DIR}/metis.h
 )
 target_include_directories(METIS_METIS PUBLIC
 		# Add the path to the generated metis.h

@@ -79,30 +79,7 @@ set(BUILD_SHARED_LIBS ${METIS_SHARED_LIBS})
 #                                       External packages                                       #
 ]==============================================================================================]
 
-set(gklib_find_package_args CONFIG)
-if (METIS_OpenMP)
-	if (NOT COMPONENTS IN_LIST gklib_find_package_args)
-		list(APPEND gklib_find_package_args COMPONENTS)
-	endif ()
-	list(APPEND gklib_find_package_args OpenMP)
-endif ()
-FetchContent_Declare(GKlib
-		GIT_REPOSITORY https://github.com/LecrisUT/GKlib
-		GIT_TAG cmake/modernization
-		FIND_PACKAGE_ARGS ${gklib_find_package_args}
-)
-METIS_FetchContent_MakeAvailable(GKlib)
-
-include(METIS_PackagesInfo)
-
-feature_summary(
-		FILENAME ${CMAKE_CURRENT_BINARY_DIR}/METIS.info
-		VAR METIS_Info
-		DESCRIPTION "METIS supported libraries"
-		FATAL_ON_MISSING_REQUIRED_PACKAGES
-		WHAT ALL
-)
-message(STATUS ${METIS_Info})
+find_package(GKlib REQUIRED)
 
 #[==============================================================================================[
 #                                        Main definition                                        #
